@@ -285,6 +285,24 @@ typedef void (^YTPlaybackQualityCompletionHandler)(YTPlaybackQuality result,
  */
 - (void)seekToSeconds:(float)seekToSeconds allowSeekAhead:(BOOL)allowSeekAhead;
 
+#if TARGET_OS_OSX
+/**
+ * Sets the volume. Accepts an integer between 0 and 100.
+ * @param volume
+ * the JavaScript API:
+ *   https://developers.google.com/youtube/iframe_api_reference#setVolume
+ */
+- (void)setVolume:(float)volume;
+
+/**
+ * Returns the player's current volume, an integer between 0 and 100. Note that getVolume() will return the volume even if the player is muted.
+ * the JavaScript API:
+ *   https://developers.google.com/youtube/iframe_api_reference?hl=en#getVolume
+ */
+- (void)getVolume:(_Nullable YTFloatCompletionHandler)completionHandler;
+
+#endif
+
 #pragma mark - Cueing videos
 
 // Cueing functions for videos. These methods correspond to their JavaScript
